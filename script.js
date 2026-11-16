@@ -35,12 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       YEAR
+       FOOTER YEAR
     ===================================================== */
 
     if (year) {
+
         year.textContent =
             new Date().getFullYear();
+
     }
 
 
@@ -56,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 profileImage.style.display =
                     "none";
+
 
                 if (profileFallback) {
 
@@ -92,7 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateThemeButton() {
 
         if (!themeToggle) {
+
             return;
+
         }
 
 
@@ -164,7 +169,9 @@ document.addEventListener("DOMContentLoaded", function () {
             !navLinks ||
             !menuToggle
         ) {
+
             return;
+
         }
 
 
@@ -199,21 +206,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
 
 
-                const opened =
+                const isOpen =
                     navLinks.classList.contains(
                         "open"
                     );
 
 
                 menuToggle.textContent =
-                    opened
+                    isOpen
                         ? "×"
                         : "☰";
 
 
                 menuToggle.setAttribute(
                     "aria-expanded",
-                    String(opened)
+                    String(isOpen)
                 );
 
             }
@@ -258,18 +265,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 !navLinks ||
                 !menuToggle
             ) {
+
                 return;
+
             }
 
 
-            const clickedNavbar =
+            const clickedInsideNavbar =
                 event.target.closest(
                     ".navbar"
                 );
 
 
             if (
-                !clickedNavbar &&
+                !clickedInsideNavbar &&
                 navLinks.classList.contains(
                     "open"
                 )
@@ -303,14 +312,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
 
-
         /* =================================================
            INDONESIA
         ================================================= */
 
         id: {
 
-            /* NAVBAR */
+            /* NAVIGATION */
 
             navHome:
                 "Beranda",
@@ -337,7 +345,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Kontak",
 
 
-            /* HERO */
+            /* =================================================
+               HERO
+            ================================================= */
 
             availability:
                 "TERBUKA UNTUK PELUANG",
@@ -352,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Mahasiswa D3 Teknologi Komputer",
 
             heroDescription:
-                "Saya membangun website dan aplikasi yang modern, responsif, dan mudah digunakan. Saya terus mengembangkan kemampuan web development dan software development melalui proyek nyata, pembelajaran teknologi, dan eksplorasi sistem baru.",
+                "Saya adalah mahasiswa D3 Teknologi Komputer yang berfokus pada Full-Stack Web Development. Saya membangun aplikasi web menggunakan PHP, Laravel, JavaScript, dan database, mulai dari pengembangan antarmuka hingga logika sistem dan pengelolaan data.",
 
             viewProjects:
                 "Lihat Proyek",
@@ -360,20 +370,31 @@ document.addEventListener("DOMContentLoaded", function () {
             downloadCV:
                 "Download CV",
 
+            projectsBuilt:
+                "Proyek",
+
             featuredProjects:
                 "Proyek Utama",
 
             alwaysLearning:
                 "Terus Belajar",
 
+            creativeDeveloper:
+                "Junior Full-Stack Web Developer",
+
             softwareDeveloper:
-                "Software Developer",
+                "Junior Full-Stack Web Developer",
+
+            webDevelopment:
+                "Web Development",
 
             scrollDown:
                 "Scroll Down ↓",
 
 
-            /* ABOUT */
+            /* =================================================
+               ABOUT
+            ================================================= */
 
             aboutLabel:
                 "01 / TENTANG SAYA",
@@ -394,10 +415,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Halo! Saya Tania 👋",
 
             aboutParagraph1:
-                "Saya adalah mahasiswa D3 Teknologi Komputer di Institut Teknologi Del yang memiliki minat pada web development, software development, dan teknologi digital.",
+                "Saya adalah mahasiswa D3 Teknologi Komputer di Institut Teknologi Del dengan fokus pada Full-Stack Web Development, khususnya pengembangan aplikasi menggunakan PHP, Laravel, JavaScript, dan database.",
 
             aboutParagraph2:
-                "Saya mengembangkan kemampuan melalui proyek akademik dan pribadi menggunakan teknologi frontend, backend, database, mobile development, Git, dan GitHub.",
+                "Saya mengembangkan kemampuan melalui proyek akademik dan proyek pribadi, mulai dari perancangan antarmuka, pengembangan backend, pengelolaan database, debugging, hingga penggunaan Git dan GitHub untuk version control.",
 
             letsConnect:
                 "Mari terhubung",
@@ -412,10 +433,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "FOKUS",
 
             interestLabel:
-                "MINAT",
+                "SPESIALISASI",
 
 
-            /* PROJECTS */
+            /* =================================================
+               PROJECT
+            ================================================= */
 
             projectLabel:
                 "02 / PROYEK SAYA",
@@ -427,73 +450,124 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Projects.",
 
             projectSubtitle:
-                "Dua proyek utama yang menunjukkan pengalaman saya dalam pengembangan aplikasi web dan sistem digital.",
+                "Proyek utama yang menunjukkan pengalaman saya dalam pengembangan aplikasi web, backend, database, dan sistem digital.",
 
             featuredBadge:
                 "PROYEK UTAMA",
 
-            viewDashboard:
-                "Lihat Dashboard",
+            featuredProject:
+                "PROYEK UNGGULAN",
 
-            viewPoster:
-                "Lihat Poster",
+            newProject:
+                "PROYEK TERBARU",
 
-            viewGithub:
-                "GitHub",
 
-            contactMe:
-                "Email",
+            /* PROJECT LAMA - TETAP DIDUKUNG */
+
+            hydroDescription:
+                "Aplikasi berbasis web untuk membantu pengelolaan dan pemantauan sistem hidroponik.",
+
+            coffeeDescription:
+                "Website dengan fokus pada penyajian informasi, desain responsif, dan pengalaman pengguna.",
+
+            takahDescription:
+                "Proyek aplikasi untuk menerapkan konsep software development dan user interface.",
+
+            dispenserDescription:
+                "Sistem dispenser sebagai penerapan logika pemrograman dan pengembangan sistem.",
+
+            ijabuDescription:
+                "Aplikasi web yang dikembangkan sebagai bagian dari pembelajaran software dan teknologi web.",
+
+
+            /* =================================================
+               LAUNDRY PROJECT
+            ================================================= */
 
             laundryDescription:
-                "Aplikasi manajemen laundry berbasis Laravel yang membantu pengelolaan pelanggan, layanan, transaksi, pembayaran, status laundry, dan laporan dalam satu sistem yang terstruktur.",
+                "Aplikasi manajemen laundry berbasis Laravel yang dirancang untuk membantu pengelolaan pelanggan, layanan, transaksi, pembayaran, status laundry, dan laporan dalam satu sistem yang terstruktur dan mudah digunakan.",
 
             customerManagement:
                 "Pelanggan",
 
             customerManagementDesc:
-                "Kelola data pelanggan.",
+                "Mengelola data pelanggan.",
 
             transactionManagement:
                 "Transaksi",
 
             transactionManagementDesc:
-                "Tunai dan kredit.",
+                "Mengelola pembayaran tunai dan kredit.",
 
             reportManagement:
                 "Laporan",
 
             reportManagementDesc:
-                "Monitoring transaksi.",
+                "Monitoring transaksi dan data laundry.",
+
+            viewGithub:
+                "Lihat GitHub",
+
+            viewDashboard:
+                "Lihat Dashboard",
+
+            contactMe:
+                "Email",
 
 
-            /* AGRICULTURE */
+            /* =================================================
+               AGRICULTURE PROJECT
+            ================================================= */
 
             agricultureTitle:
                 "Sistem Penjadwalan Pertanian",
 
             agricultureDescription:
-                "Platform digital untuk membantu petani merencanakan, mencatat, dan memantau jadwal kegiatan pertanian secara efisien, terstruktur, dan tepat waktu sehingga dapat meningkatkan produktivitas dan mengurangi kesalahan manual.",
+                "Platform digital yang membantu petani merencanakan, mencatat, dan memantau jadwal kegiatan pertanian secara lebih efisien, terstruktur, dan tepat waktu sehingga dapat meningkatkan produktivitas dan mengurangi kesalahan manual.",
 
             scheduleManagement:
                 "Penjadwalan",
 
             scheduleManagementDesc:
-                "Atur jadwal pertanian.",
+                "Mengelola jadwal kegiatan pertanian.",
+
+            agricultureManagement:
+                "Pengelolaan Pertanian",
+
+            agricultureManagementDesc:
+                "Membantu aktivitas pertanian lebih terstruktur.",
 
             plantManagement:
                 "Tanaman",
 
             plantManagementDesc:
-                "Kelola kegiatan tanaman.",
+                "Mengelola kegiatan dan data tanaman.",
+
+            efficientSystem:
+                "Sistem Efisien",
+
+            efficientSystemDesc:
+                "Mempermudah perencanaan kegiatan.",
 
             agricultureReport:
                 "Laporan",
 
             agricultureReportDesc:
-                "Panen dan pendapatan.",
+                "Monitoring panen dan pendapatan.",
+
+            viewPoster:
+                "Lihat Poster",
+
+            viewAgricultureGithub:
+                "Lihat GitHub",
+
+            contactAboutProject:
+                "Hubungi Saya",
 
 
-            /* SKILLS */
+            /* =================================================
+               SKILLS
+            ================================================= */
 
             skillsLabel:
                 "03 / TECH STACK",
@@ -508,25 +582,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Teknologi, tools, dan konsep pengembangan yang saya gunakan dalam membangun aplikasi web dan software.",
 
             frontendDescription:
-                "Membangun tampilan website yang responsif, modern, interaktif, dan mudah digunakan.",
+                "Membangun antarmuka website yang responsif, modern, interaktif, dan mudah digunakan.",
 
             backendDescription:
-                "Mengembangkan logika aplikasi, pengolahan data, serta fitur CRUD pada sistem berbasis web.",
+                "Mengembangkan logika aplikasi, pengolahan data, autentikasi, serta fitur CRUD pada sistem berbasis web.",
 
             databaseDescription:
-                "Mengelola penyimpanan data, struktur tabel, relasi data, dan proses database.",
+                "Mengelola penyimpanan data, struktur tabel, relasi data, query, dan proses database.",
 
             mobileDescription:
-                "Mempelajari pengembangan aplikasi lintas platform dengan fokus pada antarmuka pengguna.",
+                "Mempelajari pengembangan aplikasi lintas platform menggunakan Flutter dan Dart dengan fokus pada antarmuka pengguna.",
 
             softwareDescription:
-                "Menerapkan konsep pengembangan software untuk menghasilkan program yang terstruktur dan mudah dikembangkan.",
+                "Menerapkan konsep software engineering untuk menghasilkan program yang terstruktur, mudah dikembangkan, dan mudah dipelihara.",
 
             toolsDescription:
-                "Menggunakan berbagai tools untuk development, version control, dan pengelolaan proyek.",
+                "Menggunakan berbagai development tools untuk coding, version control, debugging, dependency management, dan pengelolaan proyek.",
 
 
-            /* EXPERIENCE */
+            /* =================================================
+               EXPERIENCE
+            ================================================= */
 
             journeyLabel:
                 "04 / PERJALANAN",
@@ -535,13 +611,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Perjalanan pendidikan, pembelajaran, dan pengembangan kemampuan saya.",
 
             educationJourney:
-                "Mempelajari pemrograman, database, pengembangan aplikasi, frontend, backend, dan software development.",
+                "Mempelajari pemrograman, database, pengembangan aplikasi, frontend, backend, software engineering, serta berbagai teknologi pendukung.",
 
             projectJourney:
-                "Mengembangkan berbagai proyek akademik dan pribadi untuk meningkatkan kemampuan problem solving dan software development.",
+                "Mengembangkan berbagai proyek akademik dan pribadi untuk meningkatkan kemampuan problem solving, web development, database, dan software development.",
 
 
-            /* CERTIFICATES */
+            /* =================================================
+               CERTIFICATES
+            ================================================= */
 
             achievementLabel:
                 "05 / PENCAPAIAN",
@@ -571,16 +649,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Keahlian Terkait",
 
             ciscoDescription:
-                "Sertifikat pembelajaran dasar cybersecurity mengenai keamanan digital, ancaman siber, perlindungan data, dan keamanan jaringan.",
+                "Sertifikat pembelajaran dasar cybersecurity yang membahas keamanan digital, ancaman siber, perlindungan data, dan dasar keamanan jaringan.",
 
             pekanDescription:
-                "Pengalaman mengikuti kompetisi teknologi informasi yang membantu mengembangkan problem solving dan kemampuan teknologi.",
+                "Pengalaman mengikuti kompetisi teknologi informasi yang membantu mengembangkan kemampuan problem solving, kreativitas, dan pemahaman teknologi.",
 
             fitDescription:
-                "Kompetisi teknologi yang memberikan pengalaman mengembangkan kreativitas, kemampuan teknis, kerja sama, dan problem solving.",
+                "Kompetisi teknologi yang memberikan pengalaman dalam mengembangkan kreativitas, kemampuan teknis, kerja sama tim, dan problem solving.",
 
 
-            /* ORGANIZATION */
+            /* =================================================
+               ORGANIZATION
+            ================================================= */
 
             organizationLabel:
                 "06 / ORGANISASI",
@@ -592,7 +672,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Kepanitiaan.",
 
             organizationSubtitle:
-                "Pengalaman organisasi dan kepanitiaan yang membantu saya mengembangkan komunikasi, teamwork, kreativitas, dan tanggung jawab.",
+                "Pengalaman organisasi dan kepanitiaan yang membantu saya mengembangkan kemampuan komunikasi, teamwork, kreativitas, tanggung jawab, dan koordinasi kegiatan.",
 
             activeOrganization:
                 "AKTIF",
@@ -604,16 +684,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 "PANITIA ACARA",
 
             himatekDescription:
-                "Berkontribusi dalam kegiatan publikasi dan penyebaran informasi program HIMATEK serta kegiatan mahasiswa. Membantu menyiapkan konten promosi dan informasi agar dapat disampaikan dengan jelas dan tepat waktu.",
+                "Berkontribusi dalam kegiatan publikasi dan penyebaran informasi untuk program HIMATEK serta kegiatan mahasiswa. Membantu menyiapkan konten promosi dan informasi organisasi serta bekerja sama dengan anggota lain agar informasi dapat disampaikan dengan jelas dan tepat waktu.",
+
+            contentPublication:
+                "Publikasi Konten",
+
+            contentPublicationDesc:
+                "Menyiapkan konten informasi dan promosi.",
+
+            teamCollaboration:
+                "Kolaborasi Tim",
+
+            teamCollaborationDesc:
+                "Berkoordinasi dengan anggota organisasi.",
 
             kpuDescription:
-                "Berpartisipasi dalam proses pemilihan organisasi mahasiswa HIMATEK serta membantu persiapan dan koordinasi kegiatan agar proses pemilihan berlangsung terorganisir dan tertib.",
+                "Berpartisipasi sebagai anggota panitia dalam proses pemilihan organisasi mahasiswa HIMATEK. Membantu persiapan dan koordinasi kegiatan pemilihan serta bekerja sama dengan anggota panitia lainnya agar proses berjalan terorganisir dan tertib.",
 
             idgDescription:
-                "Berpartisipasi dalam persiapan dan pelaksanaan IDG 2026, membantu koordinasi acara, serta bekerja sama dengan anggota panitia untuk mendukung kelancaran kegiatan.",
+                "Berpartisipasi dalam persiapan dan pelaksanaan kegiatan IDG 2026. Membantu koordinasi acara, menyelesaikan tanggung jawab yang diberikan, serta bekerja sama dengan anggota panitia untuk mendukung kelancaran kegiatan.",
 
 
-            /* CONTACT */
+            /* =================================================
+               CONTACT
+            ================================================= */
 
             contactTitle1:
                 "Mari Bangun Sesuatu",
@@ -622,25 +716,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Bersama.",
 
             contactDescription:
-                "Saya terbuka untuk kesempatan magang, kolaborasi, proyek, maupun diskusi mengenai web development dan software development.",
+                "Saya terbuka untuk kesempatan magang, kolaborasi, proyek, dan diskusi terkait Full-Stack Web Development, PHP, Laravel, serta Software Development.",
 
             sendEmail:
                 "Kirim Email",
 
             footerText:
-                "Dibangun dengan semangat untuk terus belajar."
+                "Dibangun dengan semangat untuk terus belajar dan berkembang."
 
         },
 
 
-
-        /* =================================================
+        /* =====================================================
            ENGLISH
-        ================================================= */
+        ===================================================== */
 
         en: {
 
-            /* NAVBAR */
+            /* NAVIGATION */
 
             navHome:
                 "Home",
@@ -667,7 +760,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Contact",
 
 
-            /* HERO */
+            /* =================================================
+               HERO
+            ================================================= */
 
             availability:
                 "OPEN TO OPPORTUNITIES",
@@ -682,7 +777,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Computer Technology Diploma Student",
 
             heroDescription:
-                "I build modern, responsive, and user-friendly websites and applications. I continuously develop my web and software development skills through real projects, technology learning, and system exploration.",
+                "I am a Computer Technology diploma student focused on Full-Stack Web Development. I build web applications using PHP, Laravel, JavaScript, and database technologies, from user interface development to application logic and data management.",
 
             viewProjects:
                 "View Projects",
@@ -690,20 +785,31 @@ document.addEventListener("DOMContentLoaded", function () {
             downloadCV:
                 "Download CV",
 
+            projectsBuilt:
+                "Projects",
+
             featuredProjects:
                 "Featured Projects",
 
             alwaysLearning:
                 "Always Learning",
 
+            creativeDeveloper:
+                "Junior Full-Stack Web Developer",
+
             softwareDeveloper:
-                "Software Developer",
+                "Junior Full-Stack Web Developer",
+
+            webDevelopment:
+                "Web Development",
 
             scrollDown:
                 "Scroll Down ↓",
 
 
-            /* ABOUT */
+            /* =================================================
+               ABOUT
+            ================================================= */
 
             aboutLabel:
                 "01 / ABOUT ME",
@@ -724,10 +830,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Hello! I'm Tania 👋",
 
             aboutParagraph1:
-                "I am a Computer Technology diploma student at Institut Teknologi Del with an interest in web development, software development, and digital technology.",
+                "I am a Computer Technology diploma student at Institut Teknologi Del focused on Full-Stack Web Development, especially building applications using PHP, Laravel, JavaScript, and database technologies.",
 
             aboutParagraph2:
-                "I develop my skills through academic and personal projects using frontend, backend, databases, mobile development, Git, and GitHub.",
+                "I develop my skills through academic and personal projects covering user interface development, backend development, database management, debugging, and Git/GitHub version control.",
 
             letsConnect:
                 "Let's connect",
@@ -742,10 +848,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "FOCUS",
 
             interestLabel:
-                "INTEREST",
+                "SPECIALIZATION",
 
 
-            /* PROJECTS */
+            /* =================================================
+               PROJECT
+            ================================================= */
 
             projectLabel:
                 "02 / MY PROJECTS",
@@ -757,46 +865,74 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Projects.",
 
             projectSubtitle:
-                "Two featured projects showcasing my experience in web application and digital system development.",
+                "Featured projects showcasing my experience in web application, backend, database, and digital system development.",
 
             featuredBadge:
                 "FEATURED",
 
-            viewDashboard:
-                "View Dashboard",
+            featuredProject:
+                "FEATURED PROJECT",
 
-            viewPoster:
-                "View Poster",
+            newProject:
+                "NEW PROJECT",
 
-            viewGithub:
-                "GitHub",
 
-            contactMe:
-                "Email",
+            /* OLD PROJECT SUPPORT */
+
+            hydroDescription:
+                "A web-based application designed to help manage and monitor hydroponic systems.",
+
+            coffeeDescription:
+                "A website focused on information delivery, responsive design, and user experience.",
+
+            takahDescription:
+                "An application project created to apply software development and user interface concepts.",
+
+            dispenserDescription:
+                "A dispenser system created to apply programming logic and system development concepts.",
+
+            ijabuDescription:
+                "A web application developed as part of my learning experience in software and web technologies.",
+
+
+            /* =================================================
+               LAUNDRY
+            ================================================= */
 
             laundryDescription:
-                "A Laravel-based laundry management application designed to manage customers, services, transactions, payments, laundry status, and reports in one structured system.",
+                "A Laravel-based laundry management application designed to manage customers, services, transactions, payments, laundry status, and reports within one structured and user-friendly system.",
 
             customerManagement:
                 "Customers",
 
             customerManagementDesc:
-                "Manage customer data.",
+                "Manage customer information.",
 
             transactionManagement:
                 "Transactions",
 
             transactionManagementDesc:
-                "Cash and credit.",
+                "Manage cash and credit payments.",
 
             reportManagement:
                 "Reports",
 
             reportManagementDesc:
-                "Monitor transactions.",
+                "Monitor laundry data and transactions.",
+
+            viewGithub:
+                "View GitHub",
+
+            viewDashboard:
+                "View Dashboard",
+
+            contactMe:
+                "Email",
 
 
-            /* AGRICULTURE */
+            /* =================================================
+               AGRICULTURE
+            ================================================= */
 
             agricultureTitle:
                 "Agricultural Scheduling System",
@@ -808,22 +944,45 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Scheduling",
 
             scheduleManagementDesc:
-                "Manage farming schedules.",
+                "Manage agricultural activity schedules.",
+
+            agricultureManagement:
+                "Agriculture Management",
+
+            agricultureManagementDesc:
+                "Keep farming activities more structured.",
 
             plantManagement:
                 "Plants",
 
             plantManagementDesc:
-                "Manage plant activities.",
+                "Manage plant activities and data.",
+
+            efficientSystem:
+                "Efficient System",
+
+            efficientSystemDesc:
+                "Simplify activity planning.",
 
             agricultureReport:
                 "Reports",
 
             agricultureReportDesc:
-                "Harvests and income.",
+                "Monitor harvests and income.",
+
+            viewPoster:
+                "View Poster",
+
+            viewAgricultureGithub:
+                "View GitHub",
+
+            contactAboutProject:
+                "Contact Me",
 
 
-            /* SKILLS */
+            /* =================================================
+               SKILLS
+            ================================================= */
 
             skillsLabel:
                 "03 / TECH STACK",
@@ -841,37 +1000,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Building responsive, modern, interactive, and user-friendly web interfaces.",
 
             backendDescription:
-                "Developing application logic, data processing, and CRUD features for web-based systems.",
+                "Developing application logic, data processing, authentication, and CRUD features for web-based systems.",
 
             databaseDescription:
-                "Managing data storage, table structures, relationships, and database operations.",
+                "Managing data storage, table structures, relationships, queries, and database operations.",
 
             mobileDescription:
-                "Learning cross-platform application development with a focus on user interfaces.",
+                "Learning cross-platform application development using Flutter and Dart with a focus on user interfaces.",
 
             softwareDescription:
-                "Applying software development concepts to create structured and maintainable programs.",
+                "Applying software engineering concepts to create structured, maintainable, and extensible programs.",
 
             toolsDescription:
-                "Using development tools for coding, version control, and project management.",
+                "Using development tools for coding, version control, debugging, dependency management, and project management.",
 
 
-            /* EXPERIENCE */
+            /* =================================================
+               EXPERIENCE
+            ================================================= */
 
             journeyLabel:
                 "04 / JOURNEY",
 
             experienceSubtitle:
-                "My educational journey, learning process, and skill development.",
+                "My educational journey, learning process, and skills development.",
 
             educationJourney:
-                "Learning programming, databases, application development, frontend, backend, and software development.",
+                "Learning programming, databases, application development, frontend, backend, software engineering, and supporting technologies.",
 
             projectJourney:
-                "Developing academic and personal projects to improve problem-solving and software development skills.",
+                "Developing academic and personal projects to improve problem-solving, web development, database, and software development skills.",
 
 
-            /* CERTIFICATES */
+            /* =================================================
+               CERTIFICATES
+            ================================================= */
 
             achievementLabel:
                 "05 / ACHIEVEMENTS",
@@ -901,16 +1064,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Related Skills",
 
             ciscoDescription:
-                "A foundational cybersecurity learning experience covering digital security, cyber threats, data protection, and network security.",
+                "A foundational cybersecurity learning experience covering digital security, cyber threats, data protection, and network security fundamentals.",
 
             pekanDescription:
-                "An information technology competition experience that helped develop problem-solving and technology skills.",
+                "An information technology competition experience that helped develop problem-solving, creativity, and technology skills.",
 
             fitDescription:
                 "A technology competition experience that helped develop creativity, technical skills, teamwork, and problem-solving abilities.",
 
 
-            /* ORGANIZATION */
+            /* =================================================
+               ORGANIZATION
+            ================================================= */
 
             organizationLabel:
                 "06 / ORGANIZATION",
@@ -922,7 +1087,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Committees.",
 
             organizationSubtitle:
-                "Organizational and committee experiences that have strengthened my communication, teamwork, creativity, and responsibility.",
+                "Organizational and committee experiences that have strengthened my communication, teamwork, creativity, responsibility, and event coordination skills.",
 
             activeOrganization:
                 "ACTIVE",
@@ -934,16 +1099,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 "EVENT COMMITTEE",
 
             himatekDescription:
-                "Contributed to publication and information-sharing activities for HIMATEK programs and student events. Assisted in preparing promotional and informational content to ensure information was communicated clearly and on time.",
+                "Contributed to publication and information-sharing activities for HIMATEK programs and student events. Assisted in preparing promotional and informational content while collaborating with other members to ensure information was communicated clearly and on time.",
+
+            contentPublication:
+                "Content Publication",
+
+            contentPublicationDesc:
+                "Prepared promotional and informational content.",
+
+            teamCollaboration:
+                "Team Collaboration",
+
+            teamCollaborationDesc:
+                "Coordinated with organization members.",
 
             kpuDescription:
-                "Participated in the HIMATEK student organization election process and assisted with preparation and coordination to support an organized and orderly election process.",
+                "Participated as a committee member in the HIMATEK student organization election process. Assisted in preparing and coordinating election activities while collaborating with other committee members to support an organized and orderly election process.",
 
             idgDescription:
-                "Participated in the preparation and implementation of IDG 2026, assisted with event coordination, and collaborated with committee members to support a successful event.",
+                "Participated in the preparation and implementation of IDG 2026 activities. Assisted with event coordination, completed assigned responsibilities, and collaborated with committee members to support the smooth implementation of the event.",
 
 
-            /* CONTACT */
+            /* =================================================
+               CONTACT
+            ================================================= */
 
             contactTitle1:
                 "Let's Build Something",
@@ -952,13 +1131,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Great Together.",
 
             contactDescription:
-                "I am open to internship opportunities, collaborations, projects, and discussions related to web development and software development.",
+                "I am open to internship opportunities, collaborations, projects, and discussions related to Full-Stack Web Development, PHP, Laravel, and Software Development.",
 
             sendEmail:
                 "Send Email",
 
             footerText:
-                "Built with passion and a commitment to keep learning."
+                "Built with passion and a commitment to keep learning and growing."
 
         }
 
@@ -976,47 +1155,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       TYPING ANIMATION
+       ROLE TYPING ANIMATION
     ===================================================== */
 
     const roleTranslations = {
 
         id: [
-            "Web Developer",
-            "Software Developer",
-            "Frontend Developer",
-            "Backend Developer"
+
+            "Junior Full-Stack Web Developer",
+
+            "Laravel Developer",
+
+            "PHP Developer",
+
+            "Software Developer"
+
         ],
 
         en: [
-            "Web Developer",
-            "Software Developer",
-            "Frontend Developer",
-            "Backend Developer"
+
+            "Junior Full-Stack Web Developer",
+
+            "Laravel Developer",
+
+            "PHP Developer",
+
+            "Software Developer"
+
         ]
 
     };
 
 
     let roleIndex = 0;
+
     let charIndex = 0;
+
     let deleting = false;
+
     let typingTimer;
 
 
     function typeEffect() {
 
         if (!typedRole) {
+
             return;
+
         }
 
 
         const roles =
-            roleTranslations[currentLanguage];
+            roleTranslations[
+                currentLanguage
+            ];
 
 
         const currentRole =
-            roles[roleIndex];
+            roles[
+                roleIndex
+            ];
 
 
         if (deleting) {
@@ -1040,17 +1238,18 @@ document.addEventListener("DOMContentLoaded", function () {
         let speed =
             deleting
                 ? 45
-                : 85;
+                : 80;
 
 
         if (
             !deleting &&
-            charIndex === currentRole.length
+            charIndex ===
+                currentRole.length
         ) {
 
             deleting = true;
 
-            speed = 1400;
+            speed = 1500;
 
         }
 
@@ -1061,9 +1260,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             deleting = false;
 
+
             roleIndex =
-                (roleIndex + 1)
-                % roles.length;
+                (
+                    roleIndex + 1
+                ) % roles.length;
+
 
             speed = 350;
 
@@ -1087,13 +1289,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         roleIndex = 0;
+
         charIndex = 0;
+
         deleting = false;
 
 
         if (typedRole) {
 
-            typedRole.textContent = "";
+            typedRole.textContent =
+                "";
 
         }
 
@@ -1107,10 +1312,18 @@ document.addEventListener("DOMContentLoaded", function () {
        CHANGE LANGUAGE
     ===================================================== */
 
-    function changeLanguage(language) {
+    function changeLanguage(
+        language
+    ) {
 
-        if (!translations[language]) {
+        if (
+            !translations[
+                language
+            ]
+        ) {
+
             return;
+
         }
 
 
@@ -1131,14 +1344,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
 
-                    const value =
-                        translations[language][key];
+                    const translation =
+                        translations[
+                            language
+                        ][
+                            key
+                        ];
 
 
-                    if (value !== undefined) {
+                    if (
+                        translation !==
+                        undefined
+                    ) {
 
                         element.textContent =
-                            value;
+                            translation;
 
                     }
 
@@ -1173,29 +1393,33 @@ document.addEventListener("DOMContentLoaded", function () {
             language;
 
 
-        if (language === "id") {
+        /* UPDATE PAGE TITLE */
+
+        if (
+            language === "id"
+        ) {
 
             document.title =
-                "Tania Mutiara Panjaitan | Portfolio";
+                "Tania Mutiara Panjaitan | Junior Full-Stack Web Developer";
 
 
             if (metaDescription) {
 
                 metaDescription.content =
-                    "Portfolio Tania Mutiara Panjaitan - Web Developer, Software Developer, dan mahasiswa D3 Teknologi Komputer Institut Teknologi Del.";
+                    "Portfolio Tania Mutiara Panjaitan - Junior Full-Stack Web Developer, PHP & Laravel Developer, dan mahasiswa D3 Teknologi Komputer Institut Teknologi Del.";
 
             }
 
         } else {
 
             document.title =
-                "Tania Mutiara Panjaitan | Developer Portfolio";
+                "Tania Mutiara Panjaitan | Junior Full-Stack Web Developer";
 
 
             if (metaDescription) {
 
                 metaDescription.content =
-                    "Portfolio of Tania Mutiara Panjaitan, Web Developer, Software Developer, and Computer Technology diploma student at Institut Teknologi Del.";
+                    "Portfolio of Tania Mutiara Panjaitan, Junior Full-Stack Web Developer focused on PHP, Laravel, JavaScript, and database development.";
 
             }
 
@@ -1248,10 +1472,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const revealObserver =
             new IntersectionObserver(
 
-                function (entries) {
+                function (
+                    entries
+                ) {
 
                     entries.forEach(
-                        function (entry) {
+                        function (
+                            entry
+                        ) {
 
                             if (
                                 entry.isIntersecting
@@ -1277,7 +1505,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
 
                 {
+
                     threshold: 0.08
+
                 }
 
             );
@@ -1293,7 +1523,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-    } else {
+    }
+
+    else {
 
         revealElements.forEach(
             function (element) {
@@ -1331,20 +1563,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const navigationObserver =
             new IntersectionObserver(
 
-                function (entries) {
+                function (
+                    entries
+                ) {
 
                     entries.forEach(
-                        function (entry) {
+                        function (
+                            entry
+                        ) {
 
                             if (
                                 !entry.isIntersecting
                             ) {
+
                                 return;
+
                             }
 
 
                             navItems.forEach(
-                                function (link) {
+                                function (
+                                    link
+                                ) {
 
                                     const href =
                                         link.getAttribute(
@@ -1353,10 +1593,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                                     link.classList.toggle(
+
                                         "active",
+
                                         href ===
                                             "#" +
                                             entry.target.id
+
                                     );
 
                                 }
@@ -1368,15 +1611,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
 
                 {
+
                     rootMargin:
                         "-25% 0px -65% 0px"
+
                 }
 
             );
 
 
         sections.forEach(
-            function (section) {
+            function (
+                section
+            ) {
 
                 navigationObserver.observe(
                     section
@@ -1389,7 +1636,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       START
+       START WEBSITE
     ===================================================== */
 
     changeLanguage(
