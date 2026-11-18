@@ -4,34 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
        ELEMENTS
     ===================================================== */
 
-    const year =
-        document.getElementById("year");
-
-    const profileImage =
-        document.getElementById("profileImage");
-
-    const profileFallback =
-        document.getElementById("profileFallback");
-
-    const themeToggle =
-        document.getElementById("themeToggle");
-
-    const menuToggle =
-        document.getElementById("menuToggle");
-
-    const navLinks =
-        document.getElementById("navLinks");
-
-    const typedRole =
-        document.getElementById("typedRole");
-
-    const languageButtons =
-        document.querySelectorAll(".lang-btn");
+    const year = document.getElementById("year");
+    const profileImage = document.getElementById("profileImage");
+    const profileFallback = document.getElementById("profileFallback");
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const typedRole = document.getElementById("typedRole");
+    const languageButtons = document.querySelectorAll(".lang-btn");
 
     const metaDescription =
-        document.querySelector(
-            'meta[name="description"]'
-        );
+        document.querySelector('meta[name="description"]');
 
 
     /* =====================================================
@@ -39,10 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     if (year) {
-
-        year.textContent =
-            new Date().getFullYear();
-
+        year.textContent = new Date().getFullYear();
     }
 
 
@@ -52,23 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (profileImage) {
 
-        profileImage.addEventListener(
-            "error",
-            function () {
+        profileImage.addEventListener("error", function () {
 
-                profileImage.style.display =
-                    "none";
+            profileImage.style.display = "none";
 
-
-                if (profileFallback) {
-
-                    profileFallback.style.display =
-                        "grid";
-
-                }
-
+            if (profileFallback) {
+                profileFallback.style.display = "grid";
             }
-        );
+
+        });
 
     }
 
@@ -78,40 +50,25 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const savedTheme =
-        localStorage.getItem(
-            "portfolio-theme"
-        );
+        localStorage.getItem("portfolio-theme");
 
 
     if (savedTheme === "dark") {
-
-        document.body.classList.add(
-            "dark"
-        );
-
+        document.body.classList.add("dark");
     }
 
 
     function updateThemeButton() {
 
         if (!themeToggle) {
-
             return;
-
         }
 
-
         const isDark =
-            document.body.classList.contains(
-                "dark"
-            );
-
+            document.body.classList.contains("dark");
 
         themeToggle.textContent =
-            isDark
-                ? "☀"
-                : "☾";
-
+            isDark ? "☀" : "☾";
 
         themeToggle.setAttribute(
             "aria-label",
@@ -128,33 +85,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (themeToggle) {
 
-        themeToggle.addEventListener(
-            "click",
-            function () {
+        themeToggle.addEventListener("click", function () {
 
-                document.body.classList.toggle(
-                    "dark"
-                );
+            document.body.classList.toggle("dark");
 
+            const isDark =
+                document.body.classList.contains("dark");
 
-                const isDark =
-                    document.body.classList.contains(
-                        "dark"
-                    );
+            localStorage.setItem(
+                "portfolio-theme",
+                isDark ? "dark" : "light"
+            );
 
+            updateThemeButton();
 
-                localStorage.setItem(
-                    "portfolio-theme",
-                    isDark
-                        ? "dark"
-                        : "light"
-                );
-
-
-                updateThemeButton();
-
-            }
-        );
+        });
 
     }
 
@@ -165,24 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closeMenu() {
 
-        if (
-            !navLinks ||
-            !menuToggle
-        ) {
-
+        if (!navLinks || !menuToggle) {
             return;
-
         }
 
+        navLinks.classList.remove("open");
 
-        navLinks.classList.remove(
-            "open"
-        );
-
-
-        menuToggle.textContent =
-            "☰";
-
+        menuToggle.textContent = "☰";
 
         menuToggle.setAttribute(
             "aria-expanded",
@@ -192,53 +126,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    if (
-        navLinks &&
-        menuToggle
-    ) {
+    if (navLinks && menuToggle) {
 
-        menuToggle.addEventListener(
-            "click",
-            function () {
+        menuToggle.addEventListener("click", function () {
 
-                navLinks.classList.toggle(
-                    "open"
-                );
+            navLinks.classList.toggle("open");
 
+            const isOpen =
+                navLinks.classList.contains("open");
 
-                const isOpen =
-                    navLinks.classList.contains(
-                        "open"
-                    );
+            menuToggle.textContent =
+                isOpen ? "×" : "☰";
 
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
 
-                menuToggle.textContent =
-                    isOpen
-                        ? "×"
-                        : "☰";
-
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
-                );
-
-            }
-        );
+        });
 
 
         navLinks
             .querySelectorAll("a")
-            .forEach(
-                function (link) {
+            .forEach(function (link) {
 
-                    link.addEventListener(
-                        "click",
-                        closeMenu
-                    );
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
 
-                }
-            );
+            });
 
     }
 
@@ -248,9 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function (event) {
 
             if (event.key === "Escape") {
-
                 closeMenu();
-
             }
 
         }
@@ -261,31 +176,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "click",
         function (event) {
 
-            if (
-                !navLinks ||
-                !menuToggle
-            ) {
-
+            if (!navLinks || !menuToggle) {
                 return;
-
             }
 
-
             const clickedInsideNavbar =
-                event.target.closest(
-                    ".navbar"
-                );
-
+                event.target.closest(".navbar");
 
             if (
                 !clickedInsideNavbar &&
-                navLinks.classList.contains(
-                    "open"
-                )
+                navLinks.classList.contains("open")
             ) {
-
                 closeMenu();
-
             }
 
         }
@@ -297,9 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function () {
 
             if (window.innerWidth > 900) {
-
                 closeMenu();
-
             }
 
         }
@@ -362,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Mahasiswa D3 Teknologi Komputer",
 
             heroDescription:
-                "Saya adalah mahasiswa D3 Teknologi Komputer yang berfokus pada Full-Stack Web Development. Saya membangun aplikasi web menggunakan PHP, Laravel, JavaScript, dan database, mulai dari pengembangan antarmuka hingga logika sistem dan pengelolaan data.",
+                "Saya adalah mahasiswa D3 Teknologi Komputer yang berfokus pada Full-Stack Web Development. Saya membangun aplikasi web menggunakan PHP, Laravel, ReactJS, JavaScript, dan database, mulai dari pengembangan antarmuka hingga logika sistem dan pengelolaan data.",
 
             viewProjects:
                 "Lihat Proyek",
@@ -415,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Halo! Saya Tania 👋",
 
             aboutParagraph1:
-                "Saya adalah mahasiswa D3 Teknologi Komputer di Institut Teknologi Del dengan fokus pada Full-Stack Web Development, khususnya pengembangan aplikasi menggunakan PHP, Laravel, JavaScript, dan database.",
+                "Saya adalah mahasiswa D3 Teknologi Komputer di Institut Teknologi Del dengan fokus pada Full-Stack Web Development, khususnya pengembangan aplikasi menggunakan PHP, Laravel, ReactJS, JavaScript, dan database.",
 
             aboutParagraph2:
                 "Saya mengembangkan kemampuan melalui proyek akademik dan proyek pribadi, mulai dari perancangan antarmuka, pengembangan backend, pengelolaan database, debugging, hingga penggunaan Git dan GitHub untuk version control.",
@@ -437,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             /* =================================================
-               PROJECT
+               PROJECTS
             ================================================= */
 
             projectLabel:
@@ -450,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Projects.",
 
             projectSubtitle:
-                "Proyek utama yang menunjukkan pengalaman saya dalam pengembangan aplikasi web, backend, database, dan sistem digital.",
+                "Proyek utama yang menunjukkan pengalaman saya dalam pengembangan aplikasi web, frontend React, backend, database, dan sistem digital.",
 
             featuredBadge:
                 "PROYEK UTAMA",
@@ -460,24 +360,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             newProject:
                 "PROYEK TERBARU",
-
-
-            /* PROJECT LAMA - TETAP DIDUKUNG */
-
-            hydroDescription:
-                "Aplikasi berbasis web untuk membantu pengelolaan dan pemantauan sistem hidroponik.",
-
-            coffeeDescription:
-                "Website dengan fokus pada penyajian informasi, desain responsif, dan pengalaman pengguna.",
-
-            takahDescription:
-                "Proyek aplikasi untuk menerapkan konsep software development dan user interface.",
-
-            dispenserDescription:
-                "Sistem dispenser sebagai penerapan logika pemrograman dan pengembangan sistem.",
-
-            ijabuDescription:
-                "Aplikasi web yang dikembangkan sebagai bagian dari pembelajaran software dan teknologi web.",
 
 
             /* =================================================
@@ -566,6 +448,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             /* =================================================
+               LUMINA STORE
+            ================================================= */
+
+            luminaDescription:
+                "Website e-commerce modern berbasis ReactJS dan Vite yang menyediakan katalog dan detail produk, wishlist, keranjang belanja, checkout simulasi, pengelolaan pesanan, serta dashboard admin untuk mengelola produk dan stok.",
+
+            luminaShopping:
+                "Belanja & Produk",
+
+            luminaShoppingDesc:
+                "Katalog, detail produk, wishlist, dan cart.",
+
+            luminaOrders:
+                "Checkout & Pesanan",
+
+            luminaOrdersDesc:
+                "Checkout simulasi dan pengelolaan status pesanan.",
+
+            luminaAdmin:
+                "Admin Dashboard",
+
+            luminaAdminDesc:
+                "Statistik, CRUD produk, dan kontrol stok.",
+
+            viewLuminaPreview:
+                "Lihat Tampilan",
+
+
+            /* =================================================
                SKILLS
             ================================================= */
 
@@ -582,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Teknologi, tools, dan konsep pengembangan yang saya gunakan dalam membangun aplikasi web dan software.",
 
             frontendDescription:
-                "Membangun antarmuka website yang responsif, modern, interaktif, dan mudah digunakan.",
+                "Membangun antarmuka website yang responsif, modern, interaktif, dan mudah digunakan menggunakan HTML, CSS, JavaScript, dan ReactJS.",
 
             backendDescription:
                 "Mengembangkan logika aplikasi, pengolahan data, autentikasi, serta fitur CRUD pada sistem berbasis web.",
@@ -597,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Menerapkan konsep software engineering untuk menghasilkan program yang terstruktur, mudah dikembangkan, dan mudah dipelihara.",
 
             toolsDescription:
-                "Menggunakan berbagai development tools untuk coding, version control, debugging, dependency management, dan pengelolaan proyek.",
+                "Menggunakan berbagai development tools untuk coding, version control, debugging, dependency management, build tools, dan pengelolaan proyek.",
 
 
             /* =================================================
@@ -614,7 +525,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Mempelajari pemrograman, database, pengembangan aplikasi, frontend, backend, software engineering, serta berbagai teknologi pendukung.",
 
             projectJourney:
-                "Mengembangkan berbagai proyek akademik dan pribadi untuk meningkatkan kemampuan problem solving, web development, database, dan software development.",
+                "Mengembangkan berbagai proyek akademik dan pribadi untuk meningkatkan kemampuan problem solving, web development, ReactJS, database, dan software development.",
 
 
             /* =================================================
@@ -716,7 +627,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Bersama.",
 
             contactDescription:
-                "Saya terbuka untuk kesempatan magang, kolaborasi, proyek, dan diskusi terkait Full-Stack Web Development, PHP, Laravel, serta Software Development.",
+                "Saya terbuka untuk kesempatan magang, kolaborasi, proyek, dan diskusi terkait Full-Stack Web Development, PHP, Laravel, ReactJS, dan Software Development.",
 
             sendEmail:
                 "Kirim Email",
@@ -777,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Computer Technology Diploma Student",
 
             heroDescription:
-                "I am a Computer Technology diploma student focused on Full-Stack Web Development. I build web applications using PHP, Laravel, JavaScript, and database technologies, from user interface development to application logic and data management.",
+                "I am a Computer Technology diploma student focused on Full-Stack Web Development. I build web applications using PHP, Laravel, ReactJS, JavaScript, and database technologies, from user interface development to application logic and data management.",
 
             viewProjects:
                 "View Projects",
@@ -830,7 +741,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Hello! I'm Tania 👋",
 
             aboutParagraph1:
-                "I am a Computer Technology diploma student at Institut Teknologi Del focused on Full-Stack Web Development, especially building applications using PHP, Laravel, JavaScript, and database technologies.",
+                "I am a Computer Technology diploma student at Institut Teknologi Del focused on Full-Stack Web Development, especially building applications using PHP, Laravel, ReactJS, JavaScript, and database technologies.",
 
             aboutParagraph2:
                 "I develop my skills through academic and personal projects covering user interface development, backend development, database management, debugging, and Git/GitHub version control.",
@@ -852,7 +763,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             /* =================================================
-               PROJECT
+               PROJECTS
             ================================================= */
 
             projectLabel:
@@ -865,7 +776,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Projects.",
 
             projectSubtitle:
-                "Featured projects showcasing my experience in web application, backend, database, and digital system development.",
+                "Featured projects showcasing my experience in React frontend development, web applications, backend development, databases, and digital systems.",
 
             featuredBadge:
                 "FEATURED",
@@ -877,26 +788,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 "NEW PROJECT",
 
 
-            /* OLD PROJECT SUPPORT */
-
-            hydroDescription:
-                "A web-based application designed to help manage and monitor hydroponic systems.",
-
-            coffeeDescription:
-                "A website focused on information delivery, responsive design, and user experience.",
-
-            takahDescription:
-                "An application project created to apply software development and user interface concepts.",
-
-            dispenserDescription:
-                "A dispenser system created to apply programming logic and system development concepts.",
-
-            ijabuDescription:
-                "A web application developed as part of my learning experience in software and web technologies.",
-
-
             /* =================================================
-               LAUNDRY
+               LAUNDRY PROJECT
             ================================================= */
 
             laundryDescription:
@@ -931,7 +824,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             /* =================================================
-               AGRICULTURE
+               AGRICULTURE PROJECT
             ================================================= */
 
             agricultureTitle:
@@ -981,6 +874,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             /* =================================================
+               LUMINA STORE
+            ================================================= */
+
+            luminaDescription:
+                "A modern e-commerce website built with ReactJS and Vite featuring product catalogs, product details, wishlist, shopping cart, simulated checkout, order management, and an admin dashboard for managing products and stock.",
+
+            luminaShopping:
+                "Shopping & Products",
+
+            luminaShoppingDesc:
+                "Catalog, product details, wishlist, and cart.",
+
+            luminaOrders:
+                "Checkout & Orders",
+
+            luminaOrdersDesc:
+                "Simulated checkout and order status management.",
+
+            luminaAdmin:
+                "Admin Dashboard",
+
+            luminaAdminDesc:
+                "Statistics, product CRUD, and stock control.",
+
+            viewLuminaPreview:
+                "View Preview",
+
+
+            /* =================================================
                SKILLS
             ================================================= */
 
@@ -997,7 +919,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Technologies, tools, and development concepts I use to build web applications and software.",
 
             frontendDescription:
-                "Building responsive, modern, interactive, and user-friendly web interfaces.",
+                "Building responsive, modern, interactive, and user-friendly web interfaces using HTML, CSS, JavaScript, and ReactJS.",
 
             backendDescription:
                 "Developing application logic, data processing, authentication, and CRUD features for web-based systems.",
@@ -1012,7 +934,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Applying software engineering concepts to create structured, maintainable, and extensible programs.",
 
             toolsDescription:
-                "Using development tools for coding, version control, debugging, dependency management, and project management.",
+                "Using development tools for coding, version control, debugging, dependency management, build processes, and project management.",
 
 
             /* =================================================
@@ -1029,7 +951,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Learning programming, databases, application development, frontend, backend, software engineering, and supporting technologies.",
 
             projectJourney:
-                "Developing academic and personal projects to improve problem-solving, web development, database, and software development skills.",
+                "Developing academic and personal projects to improve problem-solving, web development, ReactJS, database, and software development skills.",
 
 
             /* =================================================
@@ -1131,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Great Together.",
 
             contactDescription:
-                "I am open to internship opportunities, collaborations, projects, and discussions related to Full-Stack Web Development, PHP, Laravel, and Software Development.",
+                "I am open to internship opportunities, collaborations, projects, and discussions related to Full-Stack Web Development, PHP, Laravel, ReactJS, and Software Development.",
 
             sendEmail:
                 "Send Email",
@@ -1161,72 +1083,47 @@ document.addEventListener("DOMContentLoaded", function () {
     const roleTranslations = {
 
         id: [
-
             "Junior Full-Stack Web Developer",
-
             "Laravel Developer",
-
+            "ReactJS Developer",
             "PHP Developer",
-
             "Software Developer"
-
         ],
 
         en: [
-
             "Junior Full-Stack Web Developer",
-
             "Laravel Developer",
-
+            "ReactJS Developer",
             "PHP Developer",
-
             "Software Developer"
-
         ]
 
     };
 
 
     let roleIndex = 0;
-
     let charIndex = 0;
-
     let deleting = false;
-
     let typingTimer;
 
 
     function typeEffect() {
 
         if (!typedRole) {
-
             return;
-
         }
-
 
         const roles =
-            roleTranslations[
-                currentLanguage
-            ];
-
+            roleTranslations[currentLanguage];
 
         const currentRole =
-            roles[
-                roleIndex
-            ];
-
+            roles[roleIndex];
 
         if (deleting) {
-
             charIndex--;
-
         } else {
-
             charIndex++;
-
         }
-
 
         typedRole.textContent =
             currentRole.substring(
@@ -1234,17 +1131,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 charIndex
             );
 
-
         let speed =
-            deleting
-                ? 45
-                : 80;
+            deleting ? 45 : 80;
 
 
         if (
             !deleting &&
-            charIndex ===
-                currentRole.length
+            charIndex === currentRole.length
         ) {
 
             deleting = true;
@@ -1260,12 +1153,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             deleting = false;
 
-
             roleIndex =
-                (
-                    roleIndex + 1
-                ) % roles.length;
-
+                (roleIndex + 1) %
+                roles.length;
 
             speed = 350;
 
@@ -1287,21 +1177,13 @@ document.addEventListener("DOMContentLoaded", function () {
             typingTimer
         );
 
-
         roleIndex = 0;
-
         charIndex = 0;
-
         deleting = false;
 
-
         if (typedRole) {
-
-            typedRole.textContent =
-                "";
-
+            typedRole.textContent = "";
         }
-
 
         typeEffect();
 
@@ -1312,58 +1194,41 @@ document.addEventListener("DOMContentLoaded", function () {
        CHANGE LANGUAGE
     ===================================================== */
 
-    function changeLanguage(
-        language
-    ) {
+    function changeLanguage(language) {
 
-        if (
-            !translations[
-                language
-            ]
-        ) {
-
+        if (!translations[language]) {
             return;
-
         }
 
 
-        currentLanguage =
-            language;
+        currentLanguage = language;
 
 
         document
             .querySelectorAll(
                 "[data-i18n]"
             )
-            .forEach(
-                function (element) {
+            .forEach(function (element) {
 
-                    const key =
-                        element.getAttribute(
-                            "data-i18n"
-                        );
+                const key =
+                    element.getAttribute(
+                        "data-i18n"
+                    );
 
+                const translation =
+                    translations[language][key];
 
-                    const translation =
-                        translations[
-                            language
-                        ][
-                            key
-                        ];
+                if (
+                    translation !==
+                    undefined
+                ) {
 
-
-                    if (
-                        translation !==
-                        undefined
-                    ) {
-
-                        element.textContent =
-                            translation;
-
-                    }
+                    element.textContent =
+                        translation;
 
                 }
-            );
+
+            });
 
 
         languageButtons.forEach(
@@ -1373,12 +1238,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     button.dataset.lang ===
                     language;
 
-
                 button.classList.toggle(
                     "active",
                     active
                 );
-
 
                 button.setAttribute(
                     "aria-pressed",
@@ -1393,20 +1256,19 @@ document.addEventListener("DOMContentLoaded", function () {
             language;
 
 
-        /* UPDATE PAGE TITLE */
+        /* =================================================
+           UPDATE TITLE + DESCRIPTION
+        ================================================= */
 
-        if (
-            language === "id"
-        ) {
+        if (language === "id") {
 
             document.title =
                 "Tania Mutiara Panjaitan | Junior Full-Stack Web Developer";
 
-
             if (metaDescription) {
 
                 metaDescription.content =
-                    "Portfolio Tania Mutiara Panjaitan - Junior Full-Stack Web Developer, PHP & Laravel Developer, dan mahasiswa D3 Teknologi Komputer Institut Teknologi Del.";
+                    "Portfolio Tania Mutiara Panjaitan - Junior Full-Stack Web Developer dengan pengalaman PHP, Laravel, ReactJS, JavaScript, dan database.";
 
             }
 
@@ -1415,11 +1277,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.title =
                 "Tania Mutiara Panjaitan | Junior Full-Stack Web Developer";
 
-
             if (metaDescription) {
 
                 metaDescription.content =
-                    "Portfolio of Tania Mutiara Panjaitan, Junior Full-Stack Web Developer focused on PHP, Laravel, JavaScript, and database development.";
+                    "Portfolio of Tania Mutiara Panjaitan, a Junior Full-Stack Web Developer working with PHP, Laravel, ReactJS, JavaScript, and database technologies.";
 
             }
 
@@ -1472,14 +1333,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const revealObserver =
             new IntersectionObserver(
 
-                function (
-                    entries
-                ) {
+                function (entries) {
 
                     entries.forEach(
-                        function (
-                            entry
-                        ) {
+                        function (entry) {
 
                             if (
                                 entry.isIntersecting
@@ -1490,7 +1347,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     .add(
                                         "visible"
                                     );
-
 
                                 revealObserver
                                     .unobserve(
@@ -1505,9 +1361,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
 
                 {
-
                     threshold: 0.08
-
                 }
 
             );
@@ -1523,9 +1377,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-    }
-
-    else {
+    } else {
 
         revealElements.forEach(
             function (element) {
@@ -1549,7 +1401,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "main section[id]"
         );
 
-
     const navItems =
         document.querySelectorAll(
             ".nav-links a"
@@ -1563,43 +1414,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const navigationObserver =
             new IntersectionObserver(
 
-                function (
-                    entries
-                ) {
+                function (entries) {
 
                     entries.forEach(
-                        function (
-                            entry
-                        ) {
+                        function (entry) {
 
                             if (
                                 !entry.isIntersecting
                             ) {
-
                                 return;
-
                             }
 
-
                             navItems.forEach(
-                                function (
-                                    link
-                                ) {
+                                function (link) {
 
                                     const href =
                                         link.getAttribute(
                                             "href"
                                         );
 
-
                                     link.classList.toggle(
-
                                         "active",
-
                                         href ===
                                             "#" +
                                             entry.target.id
-
                                     );
 
                                 }
@@ -1611,19 +1449,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
 
                 {
-
                     rootMargin:
                         "-25% 0px -65% 0px"
-
                 }
 
             );
 
 
         sections.forEach(
-            function (
-                section
-            ) {
+            function (section) {
 
                 navigationObserver.observe(
                     section
