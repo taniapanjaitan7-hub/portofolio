@@ -187,7 +187,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 !clickedInsideNavbar &&
                 navLinks.classList.contains("open")
             ) {
+
                 closeMenu();
+
             }
 
         }
@@ -212,13 +214,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
 
+
         /* =================================================
            INDONESIA
         ================================================= */
 
         id: {
 
-            /* NAVIGATION */
+
+            /* =================================================
+               NAVIGATION
+            ================================================= */
 
             navHome:
                 "Beranda",
@@ -542,7 +548,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Pencapaian.",
 
             certificateSubtitle:
-                "Sertifikasi dan kompetisi yang saya ikuti sebagai bagian dari proses belajar dan pengembangan kemampuan teknologi.",
+                "Sertifikasi, seminar, dan kompetisi yang saya ikuti sebagai bagian dari proses belajar dan pengembangan kemampuan teknologi.",
 
             viewCertificate:
                 "Lihat Sertifikat",
@@ -556,6 +562,9 @@ document.addEventListener("DOMContentLoaded", function () {
             activityBadge:
                 "KEGIATAN",
 
+            seminarBadge:
+                "SEMINAR",
+
             relatedSkills:
                 "Keahlian Terkait",
 
@@ -567,6 +576,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             fitDescription:
                 "Kompetisi teknologi yang memberikan pengalaman dalam mengembangkan kreativitas, kemampuan teknis, kerja sama tim, dan problem solving.",
+
+            free5gcDescription:
+                "Sertifikat penyelesaian kursus Introduction to free5GC (LFS114) dari The Linux Foundation yang memperkenalkan konsep jaringan 5G Core, arsitektur jaringan, dan ekosistem free5GC.",
+
+            aiSeminarDescription:
+                "Sertifikat partisipasi dalam seminar Artificial Intelligence & Christian Faith yang membahas kecerdasan buatan serta keterkaitannya dengan nilai, etika, dan perspektif iman dalam perkembangan teknologi.",
 
 
             /* =================================================
@@ -644,7 +659,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         en: {
 
-            /* NAVIGATION */
+
+            /* =================================================
+               NAVIGATION
+            ================================================= */
 
             navHome:
                 "Home",
@@ -968,7 +986,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Achievements.",
 
             certificateSubtitle:
-                "Certifications and competitions that support my learning journey and technology skill development.",
+                "Certifications, seminars, and competitions that support my learning journey and technology skill development.",
 
             viewCertificate:
                 "View Certificate",
@@ -982,6 +1000,9 @@ document.addEventListener("DOMContentLoaded", function () {
             activityBadge:
                 "ACTIVITY",
 
+            seminarBadge:
+                "SEMINAR",
+
             relatedSkills:
                 "Related Skills",
 
@@ -993,6 +1014,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             fitDescription:
                 "A technology competition experience that helped develop creativity, technical skills, teamwork, and problem-solving abilities.",
+
+            free5gcDescription:
+                "A course completion certificate for Introduction to free5GC (LFS114) from The Linux Foundation, introducing 5G Core networking concepts, network architecture, and the free5GC ecosystem.",
+
+            aiSeminarDescription:
+                "A participation certificate for the Artificial Intelligence & Christian Faith seminar, exploring artificial intelligence and its relationship with values, ethics, and faith perspectives in technological development.",
 
 
             /* =================================================
@@ -1083,19 +1110,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const roleTranslations = {
 
         id: [
+
             "Junior Full-Stack Web Developer",
+
             "Laravel Developer",
+
             "ReactJS Developer",
+
             "PHP Developer",
+
             "Software Developer"
+
         ],
 
         en: [
+
             "Junior Full-Stack Web Developer",
+
             "Laravel Developer",
+
             "ReactJS Developer",
+
             "PHP Developer",
+
             "Software Developer"
+
         ]
 
     };
@@ -1113,23 +1152,32 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+
         const roles =
             roleTranslations[currentLanguage];
+
 
         const currentRole =
             roles[roleIndex];
 
+
         if (deleting) {
+
             charIndex--;
+
         } else {
+
             charIndex++;
+
         }
+
 
         typedRole.textContent =
             currentRole.substring(
                 0,
                 charIndex
             );
+
 
         let speed =
             deleting ? 45 : 80;
@@ -1153,9 +1201,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             deleting = false;
 
+
             roleIndex =
                 (roleIndex + 1) %
                 roles.length;
+
 
             speed = 350;
 
@@ -1177,13 +1227,18 @@ document.addEventListener("DOMContentLoaded", function () {
             typingTimer
         );
 
+
         roleIndex = 0;
+
         charIndex = 0;
+
         deleting = false;
+
 
         if (typedRole) {
             typedRole.textContent = "";
         }
+
 
         typeEffect();
 
@@ -1201,7 +1256,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        currentLanguage = language;
+        currentLanguage =
+            language;
 
 
         document
@@ -1215,8 +1271,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         "data-i18n"
                     );
 
+
                 const translation =
                     translations[language][key];
+
 
                 if (
                     translation !==
@@ -1238,10 +1296,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     button.dataset.lang ===
                     language;
 
+
                 button.classList.toggle(
                     "active",
                     active
                 );
+
 
                 button.setAttribute(
                     "aria-pressed",
@@ -1257,7 +1317,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           UPDATE TITLE + DESCRIPTION
+           UPDATE TITLE + META DESCRIPTION
         ================================================= */
 
         if (language === "id") {
@@ -1265,10 +1325,11 @@ document.addEventListener("DOMContentLoaded", function () {
             document.title =
                 "Tania Mutiara Panjaitan | Junior Full-Stack Web Developer";
 
+
             if (metaDescription) {
 
                 metaDescription.content =
-                    "Portfolio Tania Mutiara Panjaitan - Junior Full-Stack Web Developer dengan pengalaman PHP, Laravel, ReactJS, JavaScript, dan database.";
+                    "Portfolio Tania Mutiara Panjaitan - Junior Full-Stack Web Developer dengan pengalaman PHP, Laravel, ReactJS, JavaScript, database, networking, dan pengembangan software.";
 
             }
 
@@ -1277,10 +1338,11 @@ document.addEventListener("DOMContentLoaded", function () {
             document.title =
                 "Tania Mutiara Panjaitan | Junior Full-Stack Web Developer";
 
+
             if (metaDescription) {
 
                 metaDescription.content =
-                    "Portfolio of Tania Mutiara Panjaitan, a Junior Full-Stack Web Developer working with PHP, Laravel, ReactJS, JavaScript, and database technologies.";
+                    "Portfolio of Tania Mutiara Panjaitan, a Junior Full-Stack Web Developer working with PHP, Laravel, ReactJS, JavaScript, database technologies, networking, and software development.";
 
             }
 
@@ -1348,6 +1410,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         "visible"
                                     );
 
+
                                 revealObserver
                                     .unobserve(
                                         entry.target
@@ -1377,7 +1440,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-    } else {
+    }
+
+    else {
 
         revealElements.forEach(
             function (element) {
@@ -1400,6 +1465,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(
             "main section[id]"
         );
+
 
     const navItems =
         document.querySelectorAll(
@@ -1425,6 +1491,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 return;
                             }
 
+
                             navItems.forEach(
                                 function (link) {
 
@@ -1432,6 +1499,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         link.getAttribute(
                                             "href"
                                         );
+
 
                                     link.classList.toggle(
                                         "active",
